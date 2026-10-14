@@ -1,0 +1,16 @@
+services:
+  chat:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - chat-data:/app/data
+    environment:
+      CHAT_COOKIE_SECURE: "false"
+      CHAT_ALLOWED_ORIGINS: '["http://localhost:8000","http://127.0.0.1:8000"]'
+    restart: unless-stopped
+    stop_grace_period: 30s
+
+volumes:
+  chat-data:
+  
